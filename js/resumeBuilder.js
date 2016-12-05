@@ -24,17 +24,25 @@ bio.display =  function(){
 	var formattedWelcomeMessage = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage)
 
 
+	$("#header").prepend(formattedRole);
+	$("#header").prepend(formattedName);
 	
-	$("#header").append(formattedName);
-	$("#header").append(formattedRole);
-	$("#header").append(formattedMobile);
+	$("#topContacts").append(formattedMobile);
 	
-	$("#header").append(formattedEmail);
-	$("#header").append(formattedGitHub);
-	$("#header").append(formattedLocation);
-
+	$("#topContacts").append(formattedEmail);
+	$("#topContacts").append(formattedGitHub);
+	$("#topContacts").append(formattedLocation);
 	$("#header").append(formattedPic);
 	$("#header").append(formattedWelcomeMessage);
+
+	//insert contact info into footer
+
+	$("#footerContacts").append(formattedMobile);	
+	$("#footerContacts").append(formattedEmail);
+	$("#footerContacts").append(formattedGitHub);
+	$("#footerContacts").append(formattedLocation);
+
+	
 
 	this.insertSkills();
 
@@ -165,6 +173,7 @@ education.display = function(){
 
 
 //run display functions
+
 bio.display();
 work.display();
 projects.display();
