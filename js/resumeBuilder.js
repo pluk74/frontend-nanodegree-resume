@@ -9,7 +9,7 @@ var bio = {
     },
     "welcomeMessage": "Hello",
     "skills": ["complaining", "procrastinating", "sleeping"],
-    "bioPic": "http://lorempixel.com/400/300/people"
+    "biopic": "http://lorempixel.com/400/300/people"
 };
 
 
@@ -17,7 +17,7 @@ bio.display = function() {
     var formattedName = HTMLheaderName.replace("%data%", this.name);
     var formattedRole = HTMLheaderRole.replace("%data%", this.role);
     var formattedMobile = HTMLmobile.replace("%data%", this.contacts.mobile);
-    var formattedPic = HTMLbioPic.replace("%data%", this.bioPic);
+    var formattedPic = HTMLbioPic.replace("%data%", this.biopic);
     var formattedEmail = HTMLemail.replace("%data%", this.contacts.email);
     var formattedGitHub = HTMLgithub.replace("%data%", this.contacts.github);
     var formattedLocation = HTMLlocation.replace("%data%", this.contacts.location);
@@ -85,6 +85,9 @@ work.display = function() {
         var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
         $(".work-entry:last").append(formattedDates);
 
+        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
+        $(".work-entry:last").append(formattedLocation);
+
         var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[i].description);
         $(".work-entry:last").append(formattedDescription);
     });
@@ -128,16 +131,22 @@ projects.display = function() {
 var education = {
     "schools": [{
         "name": "Concordia University",
-        "city": "Montreal, QC",
+        "location": "Montreal, QC",
         "degree": "none",
-        "majors": "Geography",
-        "dates": 1996
+        "majors": ["Geography"],
+        "dates": "1996"
     }, {
         "name": "Champlain College",
-        "city": "St.Lambert, QC",
+        "location": "St.Lambert, QC",
         "degree": "DEC",
-        "majors": "Commerce",
-        "dates": 1995
+        "majors": ["Commerce", "raising hell"],
+        "dates": "1995"
+    }],
+    "onlineCourses": [{
+        "title": "Udacity Nanodegree: Front-End Development",
+        "school": "Udacity",
+        "dates": "Now",
+        "url": "http://www.udacity.com"
     }]
 };
 
@@ -154,14 +163,29 @@ education.display = function() {
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
         $(".education-entry:last").append(formattedDates);
 
-        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].city);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
         $(".education-entry:last").append(formattedLocation);
 
         var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
         $(".education-entry:last").append(formattedMajor);
     });
-};
 
+    this.onlineCourses.forEach(function(element, i) {
+        $("#education").append(HTMLonlineClasses);
+        $("#education").append(HTMLschoolStart);
+
+        var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
+        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+        $(".education-entry:last").append(formattedTitle + formattedSchool);
+
+        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+        $(".education-entry:last").append(formattedDates);
+
+        var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
+        $(".education-entry:last").append(formattedURL);
+
+    });
+};
 
 //run display functions
 
