@@ -142,7 +142,7 @@ var education = {
         "degree": "DEC",
         "majors": ["Commerce", "raising hell"],
         "dates": "1995",
-        "url" : "http://www.champlainonline.com"
+        "url": "http://www.champlainonline.com"
     }],
     "onlineCourses": [{
         "title": "Udacity Nanodegree: Front-End Development",
@@ -185,7 +185,6 @@ education.display = function() {
 
         var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
         $(".education-entry:last").append(formattedURL);
-
     });
 };
 
