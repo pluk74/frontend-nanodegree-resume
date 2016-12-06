@@ -134,13 +134,15 @@ var education = {
         "location": "Montreal, QC",
         "degree": "none",
         "majors": ["Geography"],
-        "dates": "1996"
+        "dates": "1996",
+        "url": "http://www.concordia.ca"
     }, {
         "name": "Champlain College",
         "location": "St.Lambert, QC",
         "degree": "DEC",
         "majors": ["Commerce", "raising hell"],
-        "dates": "1995"
+        "dates": "1995",
+        "url" : "http://www.champlainonline.com"
     }],
     "onlineCourses": [{
         "title": "Udacity Nanodegree: Front-End Development",
@@ -154,7 +156,7 @@ education.display = function() {
     this.schools.forEach(function(element, i) {
         $("#education").append(HTMLschoolStart);
 
-        var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
+        var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name).replace("#", education.schools[i].url);
         $(".education-entry:last").append(formattedName);
 
         var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
